@@ -1,0 +1,42 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #e5e5e5;
+}
+
+.container {
+    background-color: #d2b48c; /* Marrom Claro */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.phrase button {
+    margin: 5px;
+    background-color: white;
+    border: 1px solid #888;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.phrase button.active {
+    background-color: blue;
+    color: white;
+}
+
+.area {
+    margin-top: 20px;
+    height: 40px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.selected-words button {
+    margin: 5px;
+}

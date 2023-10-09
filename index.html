@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picnic Story</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="content">
+
+        <!-- Screen 1 -->
+        <div id="screen1" class="screen">
+            <h2>I will talk about my picnic.</h2>
+            <button class="next-btn" onclick="goToScreen(2)">Next</button>
+        </div>
+
+        <!-- Screen 2 -->
+        <div id="screen2" class="screen">
+            <h2>I went to the picnic with my <span id="companions">______</span>, it was amazing.</h2>
+            <button onclick="selectChoice('companions', 'family')">Family</button>
+            <button onclick="selectChoice('companions', 'friends')">Friends</button>
+            <button onclick="selectChoice('companions', 'siblings')">Siblings</button>
+            <button class="next-btn" onclick="goToScreen(3)">Next</button>
+        </div>
+
+        <!-- Screen 3 -->
+        <div id="screen3" class="screen">
+            <h2>I had this picnic in a <span id="place">______</span>, it was incredible.</h2>
+            <button onclick="selectChoice('place', 'dense forest')">Dense Forest</button>
+            <button onclick="selectChoice('place', 'beautiful waterfall')">Beautiful Waterfall</button>
+            <button onclick="selectChoice('place', 'clear field')">Clear Field</button>
+            <button class="next-btn" onclick="goToScreen(4)">Next</button>
+        </div>
+
+        <!-- Screen 4 -->
+        <div id="screen4" class="screen">
+            <h2>I took <span id="item">______</span> to <span id="action">______</span>.</h2>
+            <button onclick="selectChoice('item', 'book')">Book</button>
+            <button onclick="selectChoice('item', 'ball')">Ball</button>
+            <button onclick="selectChoice('item', 'board games')">Board Games</button>
+            <button class="next-btn" onclick="goToScreen(5)">Next</button>
+        </div>
+
+        <!-- Screen 5 -->
+        <div id="screen5" class="screen">
+            <h2>I brought <span id="food">______</span> to eat.</h2>
+            <button data-selected="false" onclick="selectChoice('food', 'sandwiches')">Sandwiches</button>
+            <button data-selected="false" onclick="selectChoice('food', 'fruits')">Fruits</button>
+            <button data-selected="false" onclick="selectChoice('food', 'chocolate')">Chocolate</button>
+            <button class="next-btn" onclick="goToScreen(6)">Next</button>
+        </div>
+
+
+        <!-- ... seu código HTML anterior ... -->
+
+        <!-- Screen 6 -->
+        <div id="screen6" class="screen">
+            <h2>Present</h2>
+            <button class="next-btn" onclick="goToScreen(7)">➡️</button>
+        </div>
+
+        <!-- Presentation Screen -->
+        <div id="screen7" class="screen presentation">
+            <h2>I will talk about my picnic.</h2>
+            <p>I went to the picnic with my <span id="final-companions">______</span>, it was amazing.</p>
+            <p>I had this picnic in a <span id="final-place">______</span>, it was beautiful.</p>
+            <p>I took <span id="final-item">______</span> to <span id="final-action">______</span>.</p>
+            <p>I brought <span id="final-food">______</span> to eat.</p>
+            <button class="next-btn" onclick="goToScreen(1)">Start Over</button>
+            <button class="next-btn" onclick="navigateToPeopleAroundMe()">People Around Me</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

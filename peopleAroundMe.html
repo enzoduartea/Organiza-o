@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Around Me</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Screen 1: Title -->
+    <div id="screen1" class="screen">
+        <h2>People Around Me</h2>
+        <button onclick="showScreen('screen2')">Next</button>
+    </div>
+
+    <!-- Screen 2: Choose relation -->
+    <div id="screen2" class="screen">
+        <h2>I will talk about my <span id="relationChoice">_____</span>.</h2>
+        <button onclick="selectRelation('father')">Father</button>
+        <button onclick="selectRelation('mother')">Mother</button>
+        <button onclick="selectRelation('brother')">Brother</button>
+        <button onclick="selectRelation('friend')">Friend</button>
+        <button onclick="showScreen('screen3')">Next</button>
+    </div>
+
+    <!-- Screen 3: Choose characteristics -->
+    <div id="screen3" class="screen">
+        <h2>My <span id="relationCharacteristic">_____</span> is <span id="characteristicsList">_____</span>.</h2>
+        <button onclick="selectCharacteristic('kind')">Kind</button>
+        <button onclick="selectCharacteristic('smart')">Smart</button>
+        <button onclick="selectCharacteristic('funny')">Funny</button>
+        <button onclick="showScreen('screen4')">Next</button>
+    </div>
+
+    <!-- Screen 4: Choose likes -->
+    <div id="screen4" class="screen">
+        <h2>My <span id="relationLikes">_____</span> likes <span id="likesList">_____</span>.</h2>
+        <button onclick="selectLike('football')">Football</button>
+        <button onclick="selectLike('reading')">Reading</button>
+        <button onclick="selectLike('traveling')">Traveling</button>
+        <button onclick="showScreen('screen5')">Next</button>
+    </div>
+
+    <!-- Screen 5: Choose song -->
+    <div id="screen5" class="screen">
+        <h2>My <span id="relationSong">_____</span> loves the song _____.</h2>
+        <button onclick="selectSong('A Thousand Years')">A Thousand Years</button>
+        <button onclick="selectSong('Unstoppable')">Unstoppable</button>
+        <button onclick="selectSong('I Can Only Imagine')">I Can Only Imagine</button>
+        <button onclick="reset()">Finish</button>
+    </div>
+
+    <script>
+        let relation = '';
+        let characteristics = [];
+        let likes = [];
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.style.display = 'none';
+            });
+            document.getElementById(screenId).style.display = 'block';
+        }
+
+        function selectRelation(choice) {
+            relation = choice;
+            document.getElementById('relationChoice').textContent = relation;
+            document.getElementById('relationCharacteristic').textContent = relation;
+            document.getElementById('relationLikes').textContent = relation;
+            document.getElementById('relationSong').textContent = relation;
+
+        }
+
+        function selectCharacteristic(choice) {
+            toggleChoice(characteristics, choice, 'characteristicsList', 'selectCharacteristic');
+        }
+
+        function selectLike(choice) {
+            toggleChoice(likes, choice, 'likesList', 'selectLike');
+        }
+
+        function toggleChoice(list, choice, elementId, funcName) {
+            const index = list.indexOf(choice);
+            if (index > -1) {
+                list.splice(index, 1);
+                document.querySelector(`[onclick="${funcName}('${choice}')"]`).classList.remove('button-selected');
+            } else {
+                list.push(choice);
+                document.querySelector(`[onclick="${funcName}('${choice}')"]`).classList.add('button-selected');
+            }
+            document.getElementById(elementId).textContent = list.join(", ");
+        }
+
+        function selectSong(choice) {
+            alert(`I will talk about my ${relation}. My ${relation} is ${characteristics.join(", ")}. My ${relation} likes ${likes.join(", ")}. My ${relation} loves the song ${choice}.`);
+        }
+
+        function reset() {
+            showScreen('screen1');
+            relation = '';
+            characteristics = [];
+            likes = [];
+        }
+
+
+        showScreen('screen1');
+
+    </script>
+</body>
+
+</html>
